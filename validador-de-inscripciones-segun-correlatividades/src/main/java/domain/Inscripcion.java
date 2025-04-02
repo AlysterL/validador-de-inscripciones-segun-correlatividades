@@ -11,10 +11,6 @@ public class Inscripcion {
         this.materias = new HashSet<>();
     }
 
-    public boolean aprobada() {
-        return this.materias.stream().allMatch(materia -> this.alumno.cumpleCorrelativas(materia));
-    }
-
     public Alumno getAlumno() {
         return alumno;
     }
@@ -31,5 +27,12 @@ public class Inscripcion {
     public Inscripcion setMaterias(Set<Materia> materias) {
         this.materias = materias;
         return this;
+    }
+
+    public boolean aprobada() {
+        Set<Materia> materiasAprobadas = this.alumno.getMateriasAprobadas();
+        return this.materias.stream().allMatch(materia ->
+                materiasAprobadas.containsAll(materia.getCorrelativas())
+        );
     }
 }

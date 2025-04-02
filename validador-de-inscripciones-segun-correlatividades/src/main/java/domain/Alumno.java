@@ -12,10 +12,6 @@ public class Alumno {
         this.materiasAprobadas = new HashSet<>();
     }
 
-    public boolean cumpleCorrelativas(Materia materia) {
-        return this.materiasAprobadas.containsAll(materia.getCorrelativas());
-    }
-
     public String getNombre() {
         return nombre;
     }
